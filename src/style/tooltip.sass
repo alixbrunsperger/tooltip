@@ -1,0 +1,157 @@
+$tooltip-base-space: calc(100% + #{$base-space})
+$tooltip-arrow-size: 8px
+$tooltip-big-color: #2e2e2e
+$tooltip-small-color: #ffffff
+$tooltip-small-text-color: #b3b3b3
+    
+.tooltip
+  border-radius: 5px
+  font-size: 14px
+  line-height: 20px
+  padding: $base-space
+  position: absolute
+  text-align: center
+
+  &:before
+    content: ''
+    display: block
+    height: 0
+    position: absolute
+    width: 0
+  
+  &.top
+    bottom: $tooltip-base-space
+    &:before
+      border-left: $tooltip-arrow-size solid transparent
+      border-right: $tooltip-arrow-size solid transparent
+      border-top: $tooltip-arrow-size solid transparent
+      bottom: -$tooltip-arrow-size
+    &.left
+      right: 0
+      &:before
+        right: calc(2 * #{$tooltip-arrow-size})
+    &.center
+      left: 50%
+      transform: translate(-50%, 0)
+      &:before
+        right: calc(50% - #{$tooltip-arrow-size})
+    &.right
+      left: 0
+      &:before
+        left: calc(2 * #{$tooltip-arrow-size})
+  &.center.left
+    right: $tooltip-base-space
+    top: 50%
+    transform: translate(0, -50%)
+    &:before
+      border-bottom: $tooltip-arrow-size solid transparent
+      border-left: $tooltip-arrow-size solid transparent
+      border-top: $tooltip-arrow-size solid transparent
+      right: -$tooltip-arrow-size
+      top: calc(50% - #{$tooltip-arrow-size})
+  &.center.right
+    left: $tooltip-base-space
+    top: 50%
+    transform: translate(0, -50%)
+    &:before
+      border-bottom: $tooltip-arrow-size solid transparent
+      border-right: $tooltip-arrow-size solid transparent
+      border-top: $tooltip-arrow-size solid transparent
+      left: -$tooltip-arrow-size
+      top: calc(50% - #{$tooltip-arrow-size})
+  &.bottom
+    top: $tooltip-base-space  
+    &:before
+      border-bottom: $tooltip-arrow-size solid transparent  
+      border-left: $tooltip-arrow-size solid transparent
+      border-right: $tooltip-arrow-size solid transparent
+      top: -8px
+    &.left
+      right: 0  
+      &:before
+        right: calc(2 * #{$tooltip-arrow-size})
+    &.center
+      left: 50%
+      transform: translate(-50%, 0)
+      &:before
+        right: 50%
+    &.right
+      left: 0  
+      &:before
+        left: calc(2 * #{$tooltip-arrow-size})
+  
+  &.tooltip-text
+    background-color: $tooltip-big-color
+    color: #ffffff
+    width: 160px
+    &.top
+      &:before
+        border-top-color: $tooltip-big-color
+    &.center.right
+      &:before
+        border-right-color: $tooltip-big-color
+    &.center.left
+      &:before
+        border-left-color: $tooltip-big-color
+    &.bottom
+      &:before
+        border-bottom-color: $tooltip-big-color
+    
+  &.tooltip-elements
+    align-items: center  
+    background-color: $tooltip-small-color
+    color: $tooltip-small-text-color
+    display: grid
+    grid-gap: $base-small-space
+    grid-template-columns: repeat(2, 50%)
+    justify-items: start
+    &.tooltip-icons
+      width: 220px
+    &.tooltip-buttons
+      grid-gap: 4px
+      justify-items: center
+      padding: $base-small-space
+      width: 230px
+      & button
+        padding: 0 $base-small-space
+    &.top
+      &:before
+        border-top-color: $tooltip-small-color
+    &.center.right
+      &:before
+        border-right-color: $tooltip-small-color
+    &.center.left
+      &:before
+        border-left-color: $tooltip-small-color
+    &.bottom
+      &:before
+        border-bottom-color: $tooltip-small-color
+    
+.button_container
+  display: inline-block
+  position: relative
+  
+.icon_text
+  display: inline-block
+  height: 20px
+  line-height: 20px
+  text-transform: uppercase
+  vertical-align: middle
+  & .icon
+    background-color: $tooltip-small-text-color
+    border-radius: 50%
+    box-sizing: border-box
+    display: inline-block
+    height: 20px
+    vertical-align: middle
+    width: 20px
+    & img
+      display: block
+      margin-left: auto
+      margin-right: auto
+      padding-top: 25%
+      width: 50%
+  &.is-active
+    color: $active-color
+    & .icon
+      background-color: $active-color
